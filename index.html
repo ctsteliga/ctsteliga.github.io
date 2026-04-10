@@ -3,43 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Modern GitHub Page</title>
+  <title>Cody Steliga</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9fafb;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --gradient-start: #667eea;
+      --gradient-end: #764ba2;
+      --button-hover: #5a67d8;
+      --shadow: rgba(0,0,0,0.15);
+    }
+
+    html.dark-mode {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --gradient-start: #667eea;
+      --gradient-end: #764ba2;
+      --button-hover: #5a67d8;
+      --shadow: rgba(0,0,0,0.5);
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #333;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: var(--text-primary);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background 0.3s ease;
     }
 
     header {
       padding: 2rem;
       text-align: center;
       color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
+      flex: 1;
     }
 
     header p {
       opacity: 0.9;
     }
 
+    .dark-mode-toggle {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode-toggle:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .container {
-      background: white;
+      background: var(--bg-primary);
       max-width: 900px;
       margin: 2rem auto;
       padding: 2rem;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 30px var(--shadow);
       text-align: center;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container h2 {
+      color: var(--text-primary);
+    }
+
+    .container p {
+      color: var(--text-secondary);
     }
 
     .buttons {
@@ -57,7 +108,7 @@
       transition: all 0.3s ease;
     }
 
-    button:hover {
+    button:not(.dark-mode-toggle):hover {
       background: #5a67d8;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -73,13 +124,22 @@
     .card {
       padding: 1.5rem;
       border-radius: 15px;
-      background: #f9fafb;
+      background: var(--bg-secondary);
       transition: 0.3s;
+      color: var(--text-primary);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .card h3 {
+      color: var(--text-primary);
+    }
+
+    .card p {
+      color: var(--text-secondary);
     }
 
     footer {
@@ -94,8 +154,9 @@
 <body>
 
 <header>
-  <h1>✨ My Modern Website</h1>
-  <p>Built with GitHub Pages</p>
+  <div style="flex: 1;"></div>
+  <h1>✨ Cody Steliga</h1>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 </header>
 
 <div class="container">
@@ -123,10 +184,23 @@
 </div>
 
 <footer>
-  <p>© 2026 My Website</p>
+  <p>© 2026 Cody Steliga</p>
 </footer>
 
 <script>
+  // Check for saved dark mode preference or default to false
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  if (isDarkMode) {
+    document.documentElement.classList.add('dark-mode');
+  }
+
+  function toggleDarkMode() {
+    const htmlElement = document.documentElement;
+    htmlElement.classList.toggle('dark-mode');
+    const isDark = htmlElement.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+  }
+
   function sayHello() {
     alert('Hey! Welcome to my modern GitHub page 😄');
   }

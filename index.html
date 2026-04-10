@@ -1,210 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cody Steliga</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f9fafb;
-      --text-primary: #333333;
-      --text-secondary: #666666;
-      --gradient-start: #667eea;
-      --gradient-end: #764ba2;
-      --button-hover: #5a67d8;
-      --shadow: rgba(0,0,0,0.15);
-    }
-
-    html.dark-mode {
-      --bg-primary: #1a1a1a;
-      --bg-secondary: #2d2d2d;
-      --text-primary: #ffffff;
-      --text-secondary: #cccccc;
-      --gradient-start: #667eea;
-      --gradient-end: #764ba2;
-      --button-hover: #5a67d8;
-      --shadow: rgba(0,0,0,0.5);
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: var(--text-primary);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.3s ease;
-    }
-
-    header {
-      padding: 2rem;
-      text-align: center;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      flex: 1;
-    }
-
-    header p {
-      opacity: 0.9;
-    }
-
-    .dark-mode-toggle {
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid white;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .dark-mode-toggle:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .container {
-      background: var(--bg-primary);
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px var(--shadow);
-      text-align: center;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .container h2 {
-      color: var(--text-primary);
-    }
-
-    .container p {
-      color: var(--text-secondary);
-    }
-
-    .buttons {
-      margin-top: 1.5rem;
-    }
-
-    button {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      background: #667eea;
-      color: white;
-      border-radius: 999px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:not(.dark-mode-toggle):hover {
-      background: #5a67d8;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      padding: 1.5rem;
-      border-radius: 15px;
-      background: var(--bg-secondary);
-      transition: 0.3s;
-      color: var(--text-primary);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px var(--shadow);
-    }
-
-    .card h3 {
-      color: var(--text-primary);
-    }
-
-    .card p {
-      color: var(--text-secondary);
-    }
-
-    footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 1rem;
-      color: white;
-      opacity: 0.8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Page</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+        header {
+            font-weight: bold;
+            font-size: 2em;
+            margin: 20px;
+        }
+        .theme-button {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <header id="header">My Name</header>
+    <button id="themeButton" class="theme-button">🌙 Dark Mode</button>
+    <script>
+        const themeButton = document.getElementById('themeButton');
+        let darkMode = true;
 
-<header>
-  <div style="flex: 1;"></div>
-  <h1>✨ Cody Steliga</h1>
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-</header>
+        function updateTheme() {
+            if (darkMode) {
+                document.body.style.backgroundColor = '#121212';
+                document.body.style.color = '#ffffff';
+                themeButton.textContent = '☀️ Light Mode';
+            } else {
+                document.body.style.backgroundColor = '#ffffff';
+                document.body.style.color = '#000000';
+                themeButton.textContent = '🌙 Dark Mode';
+            }
+        }
 
-<div class="container">
-  <h2>Hello there 👋</h2>
-  <p>This is a clean, modern landing page you can customize.</p>
+        themeButton.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateTheme();
+        });
 
-  <div class="buttons">
-    <button onclick="sayHello()">Say Hello</button>
-  </div>
-
-  <div class="card-grid">
-    <div class="card">
-      <h3>🚀 Projects</h3>
-      <p>Showcase your work here.</p>
-    </div>
-    <div class="card">
-      <h3>📄 About</h3>
-      <p>Tell people who you are.</p>
-    </div>
-    <div class="card">
-      <h3>📬 Contact</h3>
-      <p>Let people reach out.</p>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 Cody Steliga</p>
-</footer>
-
-<script>
-  // Check for saved dark mode preference or default to false
-  const isDarkMode = localStorage.getItem('darkMode') === 'true';
-  if (isDarkMode) {
-    document.documentElement.classList.add('dark-mode');
-  }
-
-  function toggleDarkMode() {
-    const htmlElement = document.documentElement;
-    htmlElement.classList.toggle('dark-mode');
-    const isDark = htmlElement.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDark);
-  }
-
-  function sayHello() {
-    alert('Hey! Welcome to my modern GitHub page 😄');
-  }
-</script>
-
+        // Enable dark mode by default
+        updateTheme();
+    </script>
 </body>
 </html>

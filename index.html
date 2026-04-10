@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Modern GitHub Page</title>
+  <title>Modern GitHub Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,21 +15,46 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .toggle {
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
     }
 
     header {
       padding: 2rem;
       text-align: center;
       color: white;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      opacity: 0.9;
     }
 
     .container {
@@ -40,10 +65,12 @@
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       text-align: center;
+      transition: background 0.3s, color 0.3s;
     }
 
-    .buttons {
-      margin-top: 1.5rem;
+    body.dark .container {
+      background: #1e1e1e;
+      color: #eee;
     }
 
     button {
@@ -52,15 +79,8 @@
       background: #667eea;
       color: white;
       border-radius: 999px;
-      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: #5a67d8;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      margin-top: 1rem;
     }
 
     .card-grid {
@@ -77,9 +97,8 @@
       transition: 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    body.dark .card {
+      background: #2a2a2a;
     }
 
     footer {
@@ -93,18 +112,26 @@
 </head>
 <body>
 
+<nav>
+  <div><strong>MySite</strong></div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+    <span class="toggle" onclick="toggleDarkMode()">🌙</span>
+  </div>
+</nav>
+
 <header>
   <h1>✨ Cody Steliga</h1>
-  <p>Built with GitHub Pages</p>
+  <p>Now with dark mode</p>
 </header>
 
 <div class="container">
-  <h2>Hello there 👋</h2>
-  <p>This is a clean, modern landing page you can customize.</p>
+  <h2>Hello 👋</h2>
+  <p>This site now supports dark mode and navigation.</p>
 
-  <div class="buttons">
-    <button onclick="sayHello()">Say Hello</button>
-  </div>
+  <button onclick="sayHello()">Say Hello</button>
 
   <div class="card-grid">
     <div class="card">
@@ -128,7 +155,11 @@
 
 <script>
   function sayHello() {
-    alert('Hey! Welcome to my modern GitHub page 😄');
+    alert('Hey! Welcome 😄');
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
   }
 </script>
 

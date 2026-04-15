@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Cody Steliga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s;
+    }
+
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .toggle {
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      color: white;
+    }
+
+    .container {
+      background: white;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    body.dark .container {
+      background: #1e1e1e;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: #f9fafb;
+      transition: 0.3s;
+    }
+
+    body.dark .project-card {
+      background: #2a2a2a;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .tags {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      color: white;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div><strong>MySite</strong></div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="#">Contact</a>
+    <span class="toggle" onclick="toggleDarkMode()">🌙</span>
+  </div>
+</nav>
+
+<header>
+  <h1>🚀 Projects</h1>
+  <p>Selected work and technical projects</p>
+</header>
+
+<div class="container">
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>CAD Backend System</h3>
+      <p>Designed a scalable backend architecture supporting engineering simulation workflows with gRPC services.</p>
+      <div class="tags">C++, C#, gRPC, Distributed Systems</div>
+    </div>
+
+    <div class="project-card">
+      <h3>Cross-Platform Geometry Services</h3>
+      <p>Built Linux/Windows compatible services enabling remote CAD geometry operations.</p>
+      <div class="tags">C++, .NET Core, Cross-Platform</div>
+    </div>
+
+    <div class="project-card">
+      <h3>Robotics Asset Platform</h3>
+      <p>Developed a modern asset management system for robotic inspection using Vue and .NET.</p>
+      <div class="tags">Vue, C#, PostgreSQL</div>
+    </div>
+
+    <div class="project-card">
+      <h3>Legacy System Optimization</h3>
+      <p>Improved performance of critical systems, reducing execution time from minutes to seconds.</p>
+      <div class="tags">Performance Engineering</div>
+    </div>
+
+    <div class="project-card">
+      <h3>Data Processing Pipeline</h3>
+      <p>Prototyped distributed data workflows for sensor analysis using Apache Flink.</p>
+      <div class="tags">Apache Flink, Streaming Data</div>
+    </div>
+
+    <div class="project-card">
+      <h3>Interop Testing Framework</h3>
+      <p>Built automated testing tools to validate native and managed code interoperability.</p>
+      <div class="tags">C++, C#, Testing, P/Invoke</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Cody Steliga</p>
+</footer>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+  }
+</script>
+
+</body>
+</html>
